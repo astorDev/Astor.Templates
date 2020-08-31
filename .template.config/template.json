@@ -2,8 +2,8 @@
 {
     "$schema": "http://json.schemastore.org/template",
     "author": "Astor",
-    "classifications": [ "WebApi" ], 
-    "name": "Ready-to-go WebApi",
+    "classifications": [ "Web", "WebAPI" ], 
+    "name": "Astor Web API",
     "identity": "Astor.Template",         
     "groupIdentity":"Astor.Template",
     "shortName": "api",
@@ -12,5 +12,5 @@
       "type":"project"
     },
     "sourceName": "Astor.Template",
-    "preferNameDirectory": true,
+    "preferNameDirectory": true
 }

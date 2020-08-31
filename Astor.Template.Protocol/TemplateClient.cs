@@ -4,9 +4,9 @@ using Astor.Template.Protocol.Models;
 
 namespace Astor.Template.Protocol
 {
-    public class MyClient : RestApiClient
+    public class TemplateClient : RestApiClient
     {
-        public MyClient(HttpClient httpClient) : base(httpClient)
+        public TemplateClient(HttpClient httpClient) : base(httpClient)
         {
         }
 

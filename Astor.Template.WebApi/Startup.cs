@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Astor.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +53,8 @@ namespace Astor.Template.WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Astor.Template");
             });
+            
+            app.UseRequestsLogging(l => l.IgnoredPathPatterns.Add("/swagger.*"));
             
             app.UseExceptionHandler(errorApp =>
             {
