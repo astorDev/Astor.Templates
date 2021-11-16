@@ -19,10 +19,10 @@ public class AboutController
     public About Get()
     {
         return new About
-        {
-            Description = "Astor.Template - template API",
-            Environment = this.Environment.EnvironmentName,
-            Version = this.GetType().Assembly.GetName().Version!.ToString()
-        };
+        (
+            Description : "Astor.Template - template API",
+            Environment : this.Environment.EnvironmentName,
+            Version : this.GetType().Assembly.GetName().Version!.ToString()
+        );
     }
 }
