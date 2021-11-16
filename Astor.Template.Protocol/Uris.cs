@@ -1,7 +1,6 @@
-﻿namespace Astor.Template.Protocol
+﻿namespace Astor.Template.Protocol;
+
+public class Uris
 {
-    public class Uris
-    {
-        public const string About = "about";
-    }
+    public const string About = "about";
 }

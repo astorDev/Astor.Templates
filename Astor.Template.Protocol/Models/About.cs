@@ -1,11 +1,8 @@
-﻿namespace Astor.Template.Protocol.Models
+﻿namespace Astor.Template.Protocol.Models;
+
+public class About
 {
-    public class About
-    {
-        public string Description { get; set; }
-        
-        public string Version { get; set; }
-        
-        public string Environment { get; set; }
-    }
+    public string Description { get; init; }
+    public string Version { get; init; }
+    public string Environment { get; init; }
 }

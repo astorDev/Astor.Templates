@@ -2,26 +2,22 @@
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Astor.Template.Tests
+namespace Astor.Template.Tests;
+
+public class UpdatedWebApplicationFactory<T> : WebApplicationFactory<T> where T : class
 {
-    public class UpdatedWebApplicationFactory<T> : WebApplicationFactory<T> where T : class
+    protected HttpClient HttpClient;
+    protected void EnsureHttpClientCreated()
     {
-        protected HttpClient httpClient;
-        protected void ensureHttpClientCreated()
-        {
-            if (this.httpClient == null)
-            {
-                this.httpClient = this.CreateClient();
-            }
-        }
+        this.HttpClient ??= this.CreateClient();
+    }
         
-        public IServiceProvider ServiceProvider
+    public IServiceProvider ServiceProvider
+    {
+        get
         {
-            get
-            {
-                this.ensureHttpClientCreated();
-                return this.Server.Host.Services;
-            }
+            this.EnsureHttpClientCreated();
+            return this.Server.Host.Services;
         }
     }
 }
