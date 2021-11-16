@@ -2,6 +2,6 @@
 {
     public class Test
     {
-        public readonly WebApplicationFactory Factory = new WebApplicationFactory();
+        public readonly WebApplicationFactory Factory = new();
     }
 }

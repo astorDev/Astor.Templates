@@ -2,38 +2,37 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Astor.Template.Protocol
+namespace Astor.Template.Protocol;
+
+public class RestApiClient
 {
-    public class RestApiClient
+    public HttpClient HttpClient { get; }
+
+    public RestApiClient(HttpClient httpClient)
     {
-        public HttpClient HttpClient { get; }
-
-        public RestApiClient(HttpClient httpClient)
-        {
-            this.HttpClient = httpClient;
-        }
+        this.HttpClient = httpClient;
+    }
         
-        protected async Task<T> ReadAsync<T>(HttpResponseMessage response)
-        {
-            await this.OnResponseReceivedAsync(response);
+    protected async Task<T> ReadAsync<T>(HttpResponseMessage response)
+    {
+        await this.OnResponseReceivedAsync(response);
             
-            if (!response.IsSuccessStatusCode)
-            {
-                await this.OnNoneSuccessStatusCode(response);
-            }
-
-            var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(json);
-        }
-
-        protected virtual Task OnResponseReceivedAsync(HttpResponseMessage response)
+        if (!response.IsSuccessStatusCode)
         {
-            return Task.CompletedTask;
+            await this.OnNoneSuccessStatusCode(response);
         }
 
-        protected virtual async Task OnNoneSuccessStatusCode(HttpResponseMessage response)
-        {
-            response.EnsureSuccessStatusCode();
-        }
+        var json = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<T>(json);
+    }
+
+    protected virtual Task OnResponseReceivedAsync(HttpResponseMessage response)
+    {
+        return Task.CompletedTask;
+    }
+
+    protected virtual async Task OnNoneSuccessStatusCode(HttpResponseMessage response)
+    {
+        response.EnsureSuccessStatusCode();
     }
 }
