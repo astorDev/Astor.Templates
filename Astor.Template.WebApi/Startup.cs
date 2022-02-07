@@ -1,15 +1,3 @@
-using Astor.Logging;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-
 namespace Astor.Template.WebApi;
 
 public class Startup
@@ -28,12 +16,10 @@ public class Startup
             {
                 json.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
-
-
-
+        
         services.AddSwaggerGen(swagger =>
         {
-            swagger.SwaggerDoc("v1", new OpenApiInfo
+            swagger.SwaggerDoc("v1", new()
             {
                 Title = "Astor.Template",
                 Version = this.GetType().Assembly.GetName().Version!.ToString()
@@ -69,7 +55,6 @@ public class Startup
                 }));
             });
         });
-
 
         app.UseRouting();
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Net.Http;
-using Microsoft.AspNetCore.Mvc.Testing;
-
-namespace Astor.Template.Tests;
+﻿namespace Astor.Template.Tests.Core;
 
 public class UpdatedWebApplicationFactory<T> : WebApplicationFactory<T> where T : class
 {
-    protected HttpClient HttpClient;
+    protected HttpClient? HttpClient;
     protected void EnsureHttpClientCreated()
     {
         this.HttpClient ??= this.CreateClient();

@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Net;
+﻿namespace Astor.Template.WebApi;
 
-namespace Astor.Template.WebApi;
-
-public class Error
+public record Error(HttpStatusCode Code, string Reason)
 {
-    public HttpStatusCode Code { get; set; }
-
-    public string Reason { get; set; }
-
     public object Details { get; set; }
 
-    public static Error Unknown => new Error
-    {
-        Code = HttpStatusCode.InternalServerError,
-        Reason = "Unknown"
-    };
+    public static Error Unknown => new(HttpStatusCode.InternalServerError, "Unknown");
 
     public static Error Interpret(Exception exception, bool showDetails)
     {
