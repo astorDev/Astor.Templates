@@ -1,9 +1,4 @@
-﻿using Astor.Template.Protocol;
-using Astor.Template.Protocol.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Astor.Template.WebApi.Controllers;
+﻿namespace Astor.Template.WebApi.Controllers;
 
 [Route(Uris.About)]
 public class AboutController
@@ -18,7 +13,7 @@ public class AboutController
     [HttpGet]
     public About Get()
     {
-        return new About
+        return new
         (
             Description : "Astor.Template - template API",
             Environment : this.Environment.EnvironmentName,

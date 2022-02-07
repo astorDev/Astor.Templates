@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Astor.Template.Tests;
+﻿namespace Astor.Template.Tests;
 
 [TestClass]
 public class AboutShould : Test

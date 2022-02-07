@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Astor.Template.Protocol.Models;
 
 namespace Astor.Template.Protocol;
 
